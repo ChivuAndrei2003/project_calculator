@@ -1,37 +1,144 @@
-/*Create a basic HTML calculator with buttons for each digit and operator (including =).
-Don’t worry about making them functional just yet.
-There should also be a display for the calculator. Go ahead and fill it with some dummy numbers so it looks correct.
-Add a “clear” button.*/
-
-#calc{
+body, html {
+    min-height: 100vh;
+    width: 100%;
     display: flex;
-  
-    height: auto;
-    
-}
-.btn{
-    display: flex;
-    
-
-}
-
-#container{
-    position: relative;
-    display: flex;
-    
-
-} 
-.buttons{
-    position: absolute;
-    display: flex;
-    align-content: center;
-    align-items: center;
     justify-content: center;
-}
-/*📝 Pași simpli pentru suprapunere:
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  #calc {
+    max-width: 375px;
+    width: 100%;
+    position: relative;
+  }
+  
+  #container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  
+  #display {
+    position: absolute;
+    top: 28%;
+    right: 0;
+    width: 85%;
+    height: 12%;
+    color: white;
+    font-size: 60px;
+    font-weight: 200;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 21px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: transparent;
+  }
+  
+  #buttons {
+    position: absolute;
+    top: 40%;
+    left: 7%;
+    width: 86%;
+    height: 53%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 12px;
+  }
+  
+  .btn {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    font-size: 36px;
+    text-align: center;
+    background-color: rgba(27, 27, 27, 0.879);
+    color: white;
+    font-weight: 400;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .btn:active {
+    background-color: rgba(255, 255, 255, 0.928);
+    color: #000;
+  }
+  
+  /* Specific button styling */
+  [aria-label="Zero"] {
+    grid-column: span 2;
+    border-radius: 50px;
+    padding-left: 25px;
+    text-align: left;
+  }
+  
+  [aria-label="Divide"],
+  [aria-label="Multiply"],
+  [aria-label="Subtract"],
+  [aria-label="Add"],
+  [aria-label="Equals"] {
+    background-color: rgb(252, 154, 49);
+  }
+  
+  [aria-label="Clear"],
+  [aria-label="Toggle Sign"],
+  [aria-label="Percentage"] {
+    background-color: rgb(165, 165, 165);
+    color: black;
+  }
+  
+  /* Media queries for responsive design */
+  @media (max-width: 375px) {
+    #display {
+        font-size: 60px;
+    }
+    
+    .btn {
+        font-size: 28px;
+    }
+  }
+  
+  @media (max-width: 320px) {
+    #display {
+        font-size: 48px;
+    }
+    
+    .btn {
+        font-size: 24px;
+    }
+  }
+
+
+
+
+/* Pași simpli pentru suprapunere:
 Pune imaginea și butoanele într-un container comun.
 Setează position: relative pe container – definește punctul de referință.
 Setează position: absolute pe butoane – le poziționezi față de container.
 Folosește top, left, right, bottom în procente pentru poziționare flexibilă.*   /
 
 //continui maine ca nu mai duc si caut pe net site-ul ala pt flex  
+
+/*Copiii direcți ai #container (adică #buttons și orice alt element din #container) 
+se vor alinia în rânduri și vor trece pe linia următoare când nu mai au loc pe orizontală.
+DAR! #buttons este un singur div, deci tot conținutul lui
+ (butoanele) va rămâne în interiorul lui.
+🔥 Problema în codul tău
+#buttons este un singur element în #container, deci flex-wrap 
+nu afectează butoanele direct.
+Butoanele sunt în interiorul lui #buttons,
+ iar acesta nu este flex, deci ele nu vor trece pe linia următoare automat. */
