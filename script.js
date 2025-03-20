@@ -169,7 +169,7 @@ if (previousNumber !== null && operator !==null && secondNumberr!==null && equal
 {const displayValue=Operate(num1,num2,operator)
  display.textContent=displayValue};}*/
 
-
+/*
 /*function Add(a,b){
     return a + b;
 };
@@ -184,7 +184,7 @@ function Divide(a,b){
     return a / b;
 };
 
-
+/*
 let num1;
 let num2;
 let operator;
@@ -217,7 +217,7 @@ function Operate(num1,num2,operator){
 
     }
     return result;
-};
+};/*
 //I have to continue tomorrow bcs I'm too tired right now
 
 // buttons is a node list. It looks and acts much like an array.
