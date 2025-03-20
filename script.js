@@ -170,7 +170,7 @@ if (previousNumber !== null && operator !==null && secondNumberr!==null && equal
  display.textContent=displayValue};}*/
 
 /*
-/*function Add(a,b){
+function Add(a,b){
     return a + b;
 };
 
@@ -184,7 +184,7 @@ function Divide(a,b){
     return a / b;
 };
 
-/*
+
 let num1;
 let num2;
 let operator;
